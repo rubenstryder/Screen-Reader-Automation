@@ -16,16 +16,14 @@ describe("Accessibility tests (NVDA)", () => {
     await screenReader.start();
   });
 
-  test("NVDA leest de hyperlink", async () => {
+  test("NVDA leest de navigatie hyperlink", async () => {
     await page.goto("https://www.cimsolutions.nl/");
 
     await screenReader.interact();
     await screenReader.next();
 
     const spoken = await screenReader.lastSpokenPhrase();
-    //expect(spoken).toMatch(/Example Domain/i);
-    //expect(spoken).toMatch(/heading/i);
-    console.log(spoken);
+    expect(spoken).toMatch("link, Naar de navigatie");
   });
 
   test("NVDA leest iets", async () => {
@@ -36,8 +34,6 @@ describe("Accessibility tests (NVDA)", () => {
     await screenReader.next();
 
     const spoken = await screenReader.lastSpokenPhrase();
-    //expect(spoken).toMatch(/Example Domain/i);
-    //expect(spoken).toMatch(/heading/i);
     console.log(spoken);
   });
 
