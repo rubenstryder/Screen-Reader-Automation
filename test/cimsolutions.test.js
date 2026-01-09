@@ -39,7 +39,7 @@ describe("Accessibility tests (NVDA)", () => {
 
   afterAll(async () => {
     await screenReader.stop();
-    //await browser.close();
+    await browser.close();
   });
 
 });
