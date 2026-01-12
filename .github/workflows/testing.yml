@@ -20,8 +20,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Configure accessibility permissions
-        run: npx guidepup setup
+      - name: Set Up Environment For Screen Reader Automation
+        uses: guidepup/setup-action
 
       - name: Run accessibility tests
         run: npm test
