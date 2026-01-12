@@ -17,9 +17,6 @@ jobs:
         with:
           node-version: 20
 
-      - name: Set Up Environment For Screen Reader Automation
-        uses: guidepup/setup-action
-
       - name: Install dependencies
         run: npm ci
 
