@@ -1,45 +1,29 @@
-/*const { nvda } = require("../node_modules/@guidepup/guidepup");
+const { nvda } = require("@guidepup/guidepup");
 const { chromium } = require("playwright");
 
-describe("Accessibility tests (NVDA)", () => {
-  let browser;
-  let context;
-  let page;
-  let screenReader;
+let browser;
+let context;
+let page;
 
-  beforeAll(async () => {
+(async () => {
     browser = await chromium.launch({ headless: false });
     context = await browser.newContext();
     page = await context.newPage();
 
-    screenReader = nvda;
-    await screenReader.start();
-  });
-
-  test("NVDA leest de navigatie hyperlink", async () => {
+    await nvda.start();
     await page.goto("https://www.cimsolutions.nl/");
 
-    await screenReader.interact();
-    await screenReader.next();
+    await nvda.interact();
+    await nvda.next();
 
-    const spoken = await screenReader.lastSpokenPhrase();
-    expect(spoken).toMatch("link, Naar de navigatie");
-  });
+    const spoken = await nvda.lastSpokenPhrase();
+    //expect(spoken).toMatch("link, Naar de navigatie");
+    if (spoken.match("link, Naar de navigatie")) {
+        console.log("Test succeeded");
+    } else {
+        console.log("Test failed");
+    }
 
-  test("NVDA leest iets", async () => {
-    await page.goto("https://www.cimsolutions.nl/");
-
-    await screenReader.interact();
-    await screenReader.next();
-    await screenReader.next();
-
-    const spoken = await screenReader.lastSpokenPhrase();
-    console.log(spoken);
-  });
-
-  afterAll(async () => {
-    await screenReader.stop();
+    await nvda.stop();
     await browser.close();
-  });
-
-});*/
+})();
