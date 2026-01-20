@@ -33,6 +33,7 @@
     ]
   },
   "scripts": {
-    "test": "jest --runInBand"
+    "unit-test": "jest --runInBand",
+    "e2e-test": "npx playwright test --reporter=html"
   }
 }

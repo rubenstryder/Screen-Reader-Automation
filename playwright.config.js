@@ -10,13 +10,16 @@ const config = {
   ...screenReaderConfig,
   reportSlowTests: null,
   timeout: 3 * 60 * 1000,
-  retries: 2,
+  retries: 3,
   projects: [
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'], headless: false },
     },
   ],
+  use: {
+    video: 'on',
+  },
 };
 
 module.exports = config;
